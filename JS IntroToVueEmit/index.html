@@ -1,0 +1,50 @@
+<!-- QUINN DOUGLAS SCRIVNER -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="icon" type="image/x-icon" href="images/test.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Ticket Shop</title>
+</head>
+
+<body>
+    <!-- Starting out with the basic HTML -->
+    <div id="movies">
+        <!-- My Button :] -->
+        <button id="summaryButton">Show/Hide Summary</button>
+         <!-- @mouseover="hover = true" @mouseleave="hover = false" -->
+         <div id="summary">
+             <!-- EACH time there is a new div created, it's updated. -->
+            <sum v-for="item in ticketsPurchased" :pictures="item.pic" :overviews="item.title" :childtick="item.child" :adulttick="item.adult" :adultamount="item.adultprice" :childamount="item.childprice" :tickets="ticketsPurchased"></sum>
+
+        </div>
+        <!-- Print out the message I put in the first few lines of the Vue -->
+        <h1 id="titler">{{ message }}</h1>
+        <!-- Give me the overview of a random movie + it's title -->
+        <button id="giveMovie" @click=randMovie>Random Movie!</button>
+        <!-- unforunate hard code because my moviecomp is in a loop -->
+        <h1 id="bigPicture">
+            <!-- Starts as an image JS erases it and puts in the overview --><img src="images/question.png" alt="" id="thePicture" />
+        </h1>   
+  <!-- <button id="submitIt" @click="printsummary" >Checkout</button> -->
+        <!-- Had to do some for each loops here for making it print out the right amount of pictures/titles -->
+        <div id="movieImages" v-for="movies in movie">
+            <!-- Creating the images with ids for formatting/alligning -->
+            <moviecomp v-bind:pictures="movies.poster_path" v-bind:overviews="movies.title" @attickets="updateAdult" @cdtickets="updateChild" ></moviecomp>
+        </div>
+    </div>
+    <!-- Rinse and Repeat -->
+    <div id="movieTitles">
+    </div>
+    </div>
+</body>
+<script src="scripts.js"></script>
+
+</html>
